@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<!DOCTYPE configuration  
+    PUBLIC "-//mybatis.org//DTD Config 3.0//EN"  
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+        <!-- dtd约束，一定要拷过去啊。下面的根据具体应用，改改就可以了 -->  
+<configuration> 
+    <settings>
+  <!-- 这个配置使全局的映射器启用或禁用缓存 -->
+  <setting name="cacheEnabled" value="true" />
+  <!-- 允许 JDBC 支持生成的键。需要适合的驱动。如果设置为 true 则这个设置强制生成的键被使用，尽管一些驱动拒绝兼容但仍然有效（比如 Derby） -->
+  <setting name="useGeneratedKeys" value="true" />
+  <!-- 配置默认的执行器。SIMPLE 执行器没有什么特别之处。REUSE 执行器重用预处理语句。BATCH 执行器重用语句和批量更新  -->
+  <setting name="defaultExecutorType" value="REUSE" />
+  <!-- 全局启用或禁用延迟加载。当禁用时，所有关联对象都会即时加载。 -->
+  <setting name="lazyLoadingEnabled" value="true"/>
+  <!-- 设置超时时间，它决定驱动等待一个数据库响应的时间。  -->
+  <setting name="defaultStatementTimeout" value="25000"/> 
+ </settings>
+    <!-- 给指定的类定义别名，这样在后面的Mapping映射文件中，可以直接写别名，可以不用写完整限定类名了 -->  
+    <typeAliases>  
+    </typeAliases>  
+    <!-- 分页插件拦截器 -->
+    <plugins>
+	    <!-- com.github.pagehelper为PageHelper类所在包名 -->
+	    <plugin interceptor="com.github.pagehelper.PageInterceptor">
+	        <property name="helperDialect" value="mysql"/>
+	        <!-- 分页合理化参数，默认值为false。当该参数设置为 true 时，pageNum<=0 时会查询第一页 -->
+	        <property name="reasonable" value="true"/>
+	        <!-- 设置为true时，如果pageSize=0或者RowBounds.limit = 0就会查询出全部的结果  -->
+	        <property name="pageSizeZero" value="true"/>
+		</plugin>
+</plugins>
+    <!-- 映射文件指定，由于已经使用了自动扫描，所以可以不写 -->  
+    <mappers>  
+    </mappers>  
+    	
+</configuration>  
