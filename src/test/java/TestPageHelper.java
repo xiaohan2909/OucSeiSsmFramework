@@ -13,6 +13,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import sei.dao.ProductMapper;
 import sei.pojo.Product;
 import sei.pojo.ProductExample;
+import sei.pojo.ProductType;
 
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
@@ -32,8 +33,9 @@ public class TestPageHelper {
 		ProductExample example = new ProductExample();
 		example.or().andNameLike("%iPhone%");
 		PageHelper.startPage(1, 5);
-		List<Product> list = productMapper.selectProductFetchRelationsByExample(example);
+		List<Product> list = productMapper.selectByExampleWithBLOBs(example);
 		PageInfo<Product> page = new PageInfo(list);
+		ProductType pt=list.get(0).getProductType();
 		logger.info(page.getPages());
 	}
 

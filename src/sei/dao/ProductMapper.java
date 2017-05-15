@@ -34,5 +34,5 @@ public interface ProductMapper {
 
     int updateByPrimaryKey(Product record);
     
-    List<Product> selectProductFetchRelationsByExample(ProductExample example);
+/*    List<Product> selectProductFetchRelations();*/
 }

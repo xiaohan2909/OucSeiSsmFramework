@@ -8,18 +8,14 @@
     <result column="code" property="code" jdbcType="CHAR" />
     <result column="price" property="price" jdbcType="INTEGER" />
     <result column="picture" property="picture" jdbcType="VARCHAR" />
+    <!-- 关联对象 -->
+    <association property="productType" 
+          column="product_type_id"
+          select ="sei.dao.ProductTypeMapper.selectByPrimaryKey" fetchType="lazy"/>  
   </resultMap>
   <resultMap id="ResultMapWithBLOBs" type="sei.pojo.Product" extends="BaseResultMap" >
     <result column="description" property="description" jdbcType="LONGVARCHAR" />
   </resultMap>
-  <!-- relations -->
-  <resultMap id="ResultMapWithAssociation" type="sei.pojo.Product" extends="BaseResultMap">
-      <association property="productType" javaType="sei.pojo.ProductType">  
-            <id column="id" property="id"  />  
-            <result column="name" property="name"/>  
-           	<result column="description" property="description" />
-        </association>  
-    </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
       <foreach collection="oredCriteria" item="criteria" separator="or" >
@@ -293,14 +289,7 @@
     where id = #{id,jdbcType=BIGINT}
   </update>
   <!-- write -->
-  <select id="selectProductFetchRelationsByExample" resultMap="ResultMapWithAssociation">  
-        select p.*,t.* from product p,product_type t  
-    <if test="_parameter != null" >
-      <include refid="Example_Where_Clause" />
-      	and p.product_type_id=t.id
-    </if>
-    <if test="orderByClause != null" >
-      order by ${orderByClause}
-    </if> 
-    </select> 
+  <!-- <select id="selectProductFetchRelations" resultMap="ResultMapWithAssociation">  
+        select p.*,t.* from product p,product_type t  where p.product_type_id=t.id
+    </select>  -->
 </mapper>

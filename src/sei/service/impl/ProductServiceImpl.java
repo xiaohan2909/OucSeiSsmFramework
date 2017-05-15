@@ -17,7 +17,7 @@ public class ProductServiceImpl implements ProductService {
 	@Override
 	public List<Product> listProduct() {
 		// TODO Auto-generated method stub
-		return productMapper.selectProductFetchRelationsByExample(null);
+		return productMapper.selectByExampleWithBLOBs(null);
 	}
 
 }
