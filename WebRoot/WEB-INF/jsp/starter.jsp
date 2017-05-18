@@ -60,7 +60,7 @@ desired effect
   <div id="content_panel" class="content-wrapper">
     
     <!-- Content Header (Page header) -->
-    <section class="content-header">
+    <!-- <section class="content-header">
       <h1>
         Page Header
         <small>Optional description</small>
@@ -71,12 +71,12 @@ desired effect
       </ol>
     </section>
 
-    <!-- Main content -->
+    Main content
     <section class="content">
 
-      <!-- Your Page Content Here -->
+      Your Page Content Here
 
-    </section>
+    </section> -->
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
@@ -96,6 +96,8 @@ desired effect
      	function showContent(url){
      		$("#content_panel").load(url);
          }
+        /**加载第一个页面*/
+     	$("#content_panel").load("work/userProfile.action");
      </script>
 </body>
 </html>

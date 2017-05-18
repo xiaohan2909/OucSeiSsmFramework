@@ -1,6 +1,8 @@
 package sei.controller;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Resource;
 import javax.interceptor.Interceptor;
@@ -12,6 +14,7 @@ import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
 
 import sei.pojo.Product;
 import sei.pojo.User;
@@ -46,24 +49,32 @@ public class UserController {
         return "showUser";  
     }  */
     @RequestMapping("/prolist")
-    public String productShow(Integer pageCur, Model model){
-    	logger.info("sendMessage");
+    public String productShow(Integer pageCur, String productName,Model model){
     	if(pageCur==null) pageCur=1;
     	PageHelper.startPage(pageCur, 5);
-    	List<Product> prolist = productService.listProduct();
+    	List<Product> prolist = productService.listByProductName(productName);
     	@SuppressWarnings({ "rawtypes", "unchecked" })
 		PageInfo<Product> page = new PageInfo(prolist);
     	model.addAttribute("page", page);
-    	
+    	model.addAttribute("productName", productName);
+    	logger.info("showPageNum"+page.getPageNum());
     	return "contents/productList";
     }
     /**
-     * 显示静态列表示例
+     * 显示用户页面示例
      * @return
      */
-    @RequestMapping("/staticTable")  
-    public String wordCountShow(){
-    	return "contents/staticTable";
+    @RequestMapping("/userProfile")  
+    public ModelAndView wordCountShow(HttpSession session){
+    	Map<String,Object> model = new HashMap<String,Object>();  
+    	/**从Session里面取User**/
+        User user = (User)session.getAttribute("user");
+        /**从数据库里刷新一下user的信息**/
+        user = userService.getUserById(user.getId());
+        model.put("user", user);
+        
+        /**也可以 return "contents/profile";*/
+        return new ModelAndView("contents/profile",model);  
     }
     
 	/**

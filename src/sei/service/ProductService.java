@@ -5,5 +5,5 @@ import java.util.List;
 import sei.pojo.Product;
 
 public interface ProductService {
-	public List<Product> listProduct();
+	public List<Product> listByProductName(String productName);
 }

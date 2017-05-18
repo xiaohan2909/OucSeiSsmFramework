@@ -23,10 +23,13 @@
 
               <div class="box-tools">
                 <div class="input-group input-group-sm" style="width: 150px;">
-                  <input type="text" name="table_search" class="form-control pull-right" placeholder="Search">
-
+                <!-- 用于分页和搜索 -->
+                <form id="pageForm">
+						<input type="hidden" name="pageCur"value="${page.pageNum }" /> 
+						 <input type="text" name="productName" value="${productName }" class="form-control pull-right" placeholder="产品名称">
+					</form>
                   <div class="input-group-btn">
-                    <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
+                    <button type="button" onclick="toPage(1)" class="btn btn-default"><i class="fa fa-search"></i></button>
                   </div>
                 </div>
               </div>
@@ -52,9 +55,7 @@
               </tbody></table>
             </div>
             <!-- /.box-body -->
-            <form id="pageForm">
-						<input type="hidden" name="pageCur"value="${page.pageNum }" /> 
-					</form>
+            
             <!-- /.box-footer-->
             <div class="box-footer clearfix">
 					<ul class="pagination pagination-sm no-margin pull-right">

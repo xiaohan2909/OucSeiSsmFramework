@@ -33,7 +33,7 @@
       <ul class="sidebar-menu">
         <li class="header">HEADER</li>
         <!-- Optionally, you can add icons to the links -->
-        <li class="active"><a href="javascript:showContent('work/staticTable.action');"><i class="fa fa-link"></i> <span>静态表格</span></a></li>
+        <li class="active"><a href="javascript:showContent('work/userProfile.action');"><i class="fa fa-link"></i> <span>用户页</span></a></li>
         <li><a href="javascript:showContent('work/prolist.action');"><i class="fa fa-link"></i> <span>动态列表</span></a></li>
         <li class="treeview">
           <a href="#"><i class="fa fa-link"></i> <span>多级链接</span>
