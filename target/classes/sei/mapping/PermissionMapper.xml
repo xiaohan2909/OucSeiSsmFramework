@@ -161,4 +161,9 @@
     set permission_name = #{permissionName,jdbcType=VARCHAR}
     where id = #{id,jdbcType=BIGINT}
   </update>
+  <select id="selectByUserId" parameterType="java.lang.Long"  resultMap="BaseResultMap" >
+    SELECT p.* FROM permission p WHERE p.id IN( 
+    				SELECT rp.permission_id FROM role_permission rp WHERE rp.role_id IN(
+    				SELECT ur.role_id FROM user_role ur WHERE ur.user_id=#{uid,jdbcType=BIGINT} ) )
+  </select>
 </mapper>

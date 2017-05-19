@@ -27,4 +27,6 @@ public interface PermissionMapper {
     int updateByPrimaryKeySelective(Permission record);
 
     int updateByPrimaryKey(Permission record);
+    //根据用户Id获取权限信息
+    List<Permission> selectByUserId(@Param("uid") Long uid);
 }

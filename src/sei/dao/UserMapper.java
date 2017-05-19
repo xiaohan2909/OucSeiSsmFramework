@@ -1,7 +1,10 @@
 package sei.dao;
 
 import java.util.List;
+
 import org.apache.ibatis.annotations.Param;
+
+import sei.pojo.Permission;
 import sei.pojo.User;
 import sei.pojo.UserExample;
 
@@ -27,4 +30,5 @@ public interface UserMapper {
     int updateByPrimaryKeySelective(User record);
 
     int updateByPrimaryKey(User record);
+    
 }

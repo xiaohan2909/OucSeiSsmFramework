@@ -16,6 +16,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import sei.annotation.Permission;
 import sei.pojo.Product;
 import sei.pojo.User;
 import sei.service.ProductService;
@@ -48,7 +49,11 @@ public class UserController {
         model.addAttribute("user", user);  
         return "showUser";  
     }  */
+    /***
+     * 产品列表，顺便测试一下权限注解
+     * */
     @RequestMapping("/prolist")
+    @Permission(permissionName="product.edit")
     public String productShow(Integer pageCur, String productName,Model model){
     	if(pageCur==null) pageCur=1;
     	PageHelper.startPage(pageCur, 5);
