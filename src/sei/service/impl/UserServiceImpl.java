@@ -3,12 +3,8 @@ package sei.service.impl;
 import java.util.List;
 
 import javax.annotation.Resource;
-
-import org.apache.catalina.util.MD5Encoder;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.springframework.stereotype.Service;
-
-import com.sun.mail.smtp.DigestMD5;
 
 import sei.dao.UserMapper;
 import sei.pojo.User;
