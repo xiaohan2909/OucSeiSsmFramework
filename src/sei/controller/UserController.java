@@ -5,11 +5,9 @@ import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Resource;
-import javax.interceptor.Interceptor;
+
 import javax.servlet.http.HttpSession;
 
-import org.apache.catalina.util.MD5Encoder;
-import org.apache.commons.codec.digest.Md5Crypt;
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
