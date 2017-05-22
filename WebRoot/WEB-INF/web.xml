@@ -41,4 +41,12 @@
   <welcome-file-list>
     <welcome-file>/index.jsp</welcome-file>
   </welcome-file-list>
+  <!-- 自定义标签 -->
+	<jsp-config>
+		<taglib>
+			<taglib-uri>/permission-tags</taglib-uri>
+			<taglib-location>/WEB-INF/tlds/hasPermission.tld</taglib-location>
+		</taglib>
+	</jsp-config>
+	<!-- 自定义标签 End-->
 </web-app>

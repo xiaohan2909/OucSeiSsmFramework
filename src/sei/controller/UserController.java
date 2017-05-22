@@ -27,10 +27,6 @@ import com.github.pagehelper.PageInfo;
  * @author frank
  *
  */
-/**
- * @author frank
- *
- */
 @Controller  
 @RequestMapping("/work")
 public class UserController {  
