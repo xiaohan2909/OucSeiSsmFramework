@@ -22,14 +22,12 @@ public class HasPermissionTag extends SimpleTagSupport {
 	private static Logger logger = Logger.getLogger(HasPermissionTag.class);  
 	/***所需权限*/
 	private String needPermission;
-	/*@Resource
-	private PermissionService permissionService;*/
-	
 
 	@Override
 	public void doTag() throws JspException, IOException {
 		HttpSession session=((PageContext)this.getJspContext()).getSession();
 		User user = (User)session.getAttribute("user");
+		/***标签类的属性会被当成是标签字段，因此不能用注解注入Bean*/
 		PermissionService permissionService = ContextLoader.getCurrentWebApplicationContext().getBean(PermissionService.class);
 		if(permissionService.validateUserPermisson(user, needPermission)){
 			getJspBody().invoke(null);
