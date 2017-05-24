@@ -38,7 +38,7 @@
         <li class="active"><a href="javascript:showContent('work/userProfile.action');"><i class="fa fa-link"></i> <span>用户页</span></a></li>
         <li><a href="javascript:showContent('work/prolist.action');"><i class="fa fa-link"></i> <span>动态列表</span></a></li>
        <p:permission needPermission="product.delete">
-       			<li><a><i class="fa fa-link"></i> <span>超级删除</span></a></li>
+       			<li><a href="javascript:showContent('work/needPermission.action');"><i class="fa fa-link"></i> <span>特权按钮</span></a></li>
        </p:permission>
        
         <li class="treeview">

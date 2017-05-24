@@ -5,6 +5,9 @@
     <id column="id" property="id" jdbcType="BIGINT" />
     <result column="username" property="username" jdbcType="VARCHAR" />
     <result column="password" property="password" jdbcType="VARCHAR" />
+    <!-- 一对多关联 -->
+    <collection property="permSet" column="id" 
+        select="sei.dao.PermissionMapper.selectByUserId" /> 
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >

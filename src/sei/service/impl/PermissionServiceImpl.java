@@ -1,6 +1,6 @@
 package sei.service.impl;
 
-import java.util.List;
+import java.util.Set;
 
 import javax.annotation.Resource;
 
@@ -16,11 +16,11 @@ public class PermissionServiceImpl implements PermissionService {
 	private PermissionMapper permissionMapper;
 	@Override
 	public boolean validateUserPermisson(User user, String permissionName) {
-		List<Permission> permlist = permissionMapper.selectByUserId(user.getId());
-		for(Permission p: permlist){
-			if(p.getPermissionName().equals(permissionName))
-				return true;
-		}
+		Set<Permission> permSet=user.getPermSet();
+		Permission p= new Permission();
+		p.setPermissionName(permissionName);
+		/**能这么用是因为我重写了Permission的equals 和hashCode 方法*/
+		if(permSet.contains(p)) return true;
 		return false;
 	}
 

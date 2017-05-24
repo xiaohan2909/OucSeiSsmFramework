@@ -47,7 +47,6 @@ public class UserController {
      * 产品列表，顺便测试一下权限注解
      * */
     @RequestMapping("/prolist")
-    @Permission(permissionName="product.edit")
     public String productShow(Integer pageCur, String productName,Model model){
     	if(pageCur==null) pageCur=1;
     	PageHelper.startPage(pageCur, 5);
@@ -80,7 +79,7 @@ public class UserController {
 	 * 登陆页
 	 * @return
 	 */
-	@RequestMapping({"/loginUI","loginSub"})
+	@RequestMapping({"/loginUI","/loginSub"})
 	public String logInAction(String userName,String password,HttpSession session) {
 		if(userName==null||password==null) return "login";
 		User user = userService.validateUser(userName, password);
@@ -88,5 +87,13 @@ public class UserController {
 		session.setAttribute("user", user);
 		return "starter";
 	}
-    
+	/**
+	 * 特权页面
+	 * @return
+	 */
+	@RequestMapping("/needPermission")
+	@Permission(permissionName="product.delete")
+    public String needPermissionShow(){
+    	return "contents/hasPermission";
+    }
 }  

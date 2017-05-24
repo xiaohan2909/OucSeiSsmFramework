@@ -50,7 +50,7 @@ public class PermissionInterceptor implements HandlerInterceptor {
         //用户拥有该权限，通过认证
         if(permissionService.validateUserPermisson(user, permName)) return true;
         //没有该权限应该跳转到一个无权限通知的页面
-        request.getRequestDispatcher("/WEB-INF/jsp/noPermission.jsp").forward(request, response);  
+        request.getRequestDispatcher("/WEB-INF/jsp/contents/noPermission.jsp").forward(request, response);  
 		return false;
 	}
 
